@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledOrderDiv = styled.div`
   height: 90vh;
   background-image: url("https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
-  font: 4rem;
+  /* font-size: 4rem; */
   object-fit: cover;
   background-repeat: no repeat;
   color: white;
@@ -14,6 +14,7 @@ const StyledOrderDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 `;
 
 export default function Order(props) {
@@ -23,7 +24,7 @@ export default function Order(props) {
     <StyledOrderDiv>
       <h2>Make your own Pizza</h2>
       <form onSubmit={onSubmit}>
-        <label>
+        <label htmlFor="name">
           Name:
           <input
             type="text"
@@ -37,7 +38,7 @@ export default function Order(props) {
           {errorState.name}
         </p>
 
-        <label>
+        <label htmlFor="email">
           Email:
           <input
             type="text"
@@ -51,7 +52,7 @@ export default function Order(props) {
           {errorState.email}
         </p>
 
-        <label>
+        <label htmlFor="phone">
           Phone Number
           <input
             type="text"
@@ -73,7 +74,7 @@ export default function Order(props) {
         </select>
 
         <div className="toppings">
-          <label>
+          <label htmlFor="extraCheese">
             Extra Cheese
             <input
               type="checkbox"
@@ -82,7 +83,7 @@ export default function Order(props) {
               checked={formState.extraCheese}
             />
           </label>
-          <label>
+          <label htmlFor="mushrooms">
             Mushrooms
             <input
               type="checkbox"
@@ -91,7 +92,7 @@ export default function Order(props) {
               checked={formState.mushrooms}
             />
           </label>
-          <label>
+          <label htmlFor="sausage">
             Sausage
             <input
               type="checkbox"
@@ -100,7 +101,7 @@ export default function Order(props) {
               checked={formState.sausage}
             />
           </label>
-          <label>
+          <label htmlFor="pineapple">
             Pineapple
             <input
               type="checkbox"
