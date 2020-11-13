@@ -1,10 +1,20 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
+
+const StyledOrderDiv = styled.div`
+  font: 4rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function Order(props) {
-  const { onChange, formState } = props;
+  const { onChange, formState, errorState } = props;
 
   return (
-    <div className="orderDiv">
+    <StyledOrderDiv>
       <p>HIIIII</p>
       <form>
         <label>
@@ -17,6 +27,9 @@ export default function Order(props) {
             value={formState.name}
           />
         </label>
+        <p data-cy="name-err" className="error">
+          {errorState.name}
+        </p>
 
         <label>
           Email:
@@ -28,6 +41,9 @@ export default function Order(props) {
             value={formState.email}
           />
         </label>
+        <p data-cy="email-err" className="error">
+          {errorState.email}
+        </p>
 
         <label>
           Phone Number
@@ -39,6 +55,9 @@ export default function Order(props) {
             value={formState.phone}
           />
         </label>
+        <p data-cy="phone-err" className="error">
+          {errorState.phone}
+        </p>
 
         <select>
           <option value="choose one">Choose One</option>
@@ -78,6 +97,6 @@ export default function Order(props) {
 
         <button type="submit">Add to Order</button>
       </form>
-    </div>
+    </StyledOrderDiv>
   );
 }
