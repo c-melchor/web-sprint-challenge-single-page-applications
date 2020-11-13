@@ -5,7 +5,6 @@ import * as yup from "yup";
 import formSchema from "./formSchema";
 import Home from "./Home";
 import Order from "./Order";
-// import pizza from "../Assets/Pizza.jpg";
 
 const App = () => {
   const initialForm = {
@@ -114,7 +113,7 @@ const App = () => {
           />
         </Route>
 
-        <Route path="/" component={Home}>
+        <Route exact path="/" component={Home}>
           <Home />
         </Route>
       </Switch>

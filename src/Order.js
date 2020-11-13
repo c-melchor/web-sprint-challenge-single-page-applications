@@ -2,9 +2,15 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const StyledOrderDiv = styled.div`
+  height: 90vh;
+  background-image: url("https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
   font: 4rem;
-  color: black;
+  object-fit: cover;
+  background-repeat: no repeat;
+  color: white;
   display: flex;
+  text-align: center;
+  line-height: 2.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -15,7 +21,7 @@ export default function Order(props) {
   console.log(formState.extraCheese, "extraacheese please!");
   return (
     <StyledOrderDiv>
-      <p>HIIIII</p>
+      <h2>Make your own Pizza</h2>
       <form onSubmit={onSubmit}>
         <label>
           Name:
