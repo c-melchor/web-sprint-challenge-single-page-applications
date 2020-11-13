@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import * as yup from "yup";
@@ -32,6 +32,7 @@ const App = () => {
     special: ""
   };
 
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [formState, setFormState] = useState(initialForm);
   const [errorState, setErrorState] = useState(defualtErrors);
 
@@ -56,6 +57,12 @@ const App = () => {
         });
       });
   };
+
+  useEffect(() => {
+    formSchema.isValid(formState).then(valid => {
+      setButtonDisabled(!valid);
+    });
+  });
 
   const onChange = event => {
     event.persist();
@@ -109,6 +116,7 @@ const App = () => {
       <Switch>
         <Route exact path="/pizza">
           <Order
+            buttonDisabled={buttonDisabled}
             formState={formState}
             errorState={errorState}
             onChange={onChange}

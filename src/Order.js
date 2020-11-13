@@ -24,8 +24,8 @@ const sizes = {
 };
 
 export default function Order(props) {
-  const { onChange, formState, errorState, onSubmit } = props;
-  console.log(formState.extraCheese, "extraacheese please!");
+  const { onChange, formState, errorState, onSubmit, buttonDisabled } = props;
+
   return (
     <StyledOrderDiv>
       <h2>Make your own Pizza</h2>
@@ -44,7 +44,6 @@ export default function Order(props) {
         <p data-cy="name-err" className="error">
           {errorState.name}
         </p>
-
         <label htmlFor="email">
           Email:
           <input
@@ -59,7 +58,6 @@ export default function Order(props) {
         <p data-cy="email-err" className="error">
           {errorState.email}
         </p>
-
         <label htmlFor="phone">
           Phone Number
           <input
@@ -74,20 +72,18 @@ export default function Order(props) {
         <p data-cy="phone-err" className="error">
           {errorState.phone}
         </p>
-
         <select name="sizes" value="{sizes.default}" onChange={onChange}>
           <option value="0">Choose One</option>
           <option data-cy="small" value="small">
             Small
           </option>
-          <option data-cy="medium" value="2">
+          <option data-cy="medium" value="medium">
             Medium
           </option>
-          <option data-cy="large" value="3">
+          <option data-cy="large" value="large">
             Large
           </option>
         </select>
-
         <div className="toppings">
           <label htmlFor="extraCheese">
             Extra Cheese
@@ -130,7 +126,6 @@ export default function Order(props) {
             />
           </label>
         </div>
-
         <label>
           Special Instructions
           <input
@@ -140,8 +135,14 @@ export default function Order(props) {
             value={formState.special}
           />
         </label>
-
-        <input data-cy="submitBtn" className="submit" type="submit" />
+        <button
+          data-cy="submitBtn"
+          className="submit"
+          type="submit"
+          disabled={buttonDisabled}
+        >
+          Order Now
+        </button>
       </form>
     </StyledOrderDiv>
   );
