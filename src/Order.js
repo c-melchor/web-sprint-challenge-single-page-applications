@@ -72,7 +72,7 @@ export default function Order(props) {
         <p data-cy="phone-err" className="error">
           {errorState.phone}
         </p>
-        <select name="sizes" value="{sizes.default}" onChange={onChange}>
+        <select name="sizes" onChange={onChange}>
           <option value="0">Choose One</option>
           <option data-cy="small" value="small">
             Small

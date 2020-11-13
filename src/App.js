@@ -16,7 +16,6 @@ const App = () => {
     mushrooms: false,
     sausage: false,
     pineapple: false,
-
     special: ""
   };
 
