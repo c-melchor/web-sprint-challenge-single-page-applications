@@ -5,6 +5,7 @@ import * as yup from "yup";
 import formSchema from "./formSchema";
 import Home from "./Home";
 import Order from "./Order";
+// import styled from "styled-components";
 
 const App = () => {
   const initialForm = {
@@ -61,7 +62,7 @@ const App = () => {
     formSchema.isValid(formState).then(valid => {
       setButtonDisabled(!valid);
     });
-  });
+  }, [formState]);
 
   const onChange = event => {
     event.persist();

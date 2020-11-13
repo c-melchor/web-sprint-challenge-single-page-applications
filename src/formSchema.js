@@ -11,7 +11,10 @@ const formSchema = yup.object().shape({
     .email()
     .required("Please enter an e-mail address"),
   phone: yup.string().required("Please enter a valid phone number"),
-  sizes: yup.string().required("Please select a size"),
+  sizes: yup
+    .string()
+    .min(2, "Select a size")
+    .required(),
   special: yup.string(),
   extraCheese: yup.boolean(),
   mushrooms: yup.boolean(),
