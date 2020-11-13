@@ -12,7 +12,7 @@ const StyledOrderDiv = styled.div`
 
 export default function Order(props) {
   const { onChange, formState, errorState, onSubmit } = props;
-
+  console.log(formState.extraCheese, "extraacheese please!");
   return (
     <StyledOrderDiv>
       <p>HIIIII</p>
@@ -69,19 +69,39 @@ export default function Order(props) {
         <div className="toppings">
           <label>
             Extra Cheese
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="extraCheese"
+              onChange={onChange}
+              checked={formState.extraCheese}
+            />
           </label>
           <label>
             Mushrooms
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="mushrooms"
+              onChange={onChange}
+              checked={formState.mushrooms}
+            />
           </label>
           <label>
             Sausage
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="sausage"
+              onChange={onChange}
+              checked={formState.sausage}
+            />
           </label>
           <label>
             Pineapple
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              name="pineapple"
+              onChange={onChange}
+              checked={formState.pineapple}
+            />
           </label>
         </div>
 

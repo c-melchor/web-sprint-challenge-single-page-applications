@@ -12,7 +12,10 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
-    // check: false,
+    extraCheese: false,
+    mushrooms: false,
+    sausage: false,
+    pineapple: false,
     special: ""
   };
 
@@ -20,7 +23,10 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
-    // check: false,
+    extraCheese: "",
+    mushrooms: "",
+    sausage: "",
+    pineapple: "",
     special: ""
   };
 
@@ -30,17 +36,13 @@ const App = () => {
   const [order, setOrder] = useState([]);
 
   const validate = event => {
-    //method in yup called reach, which allows us to reach into our schema and test one piece of it
-    //.reach(schema, field to validate)
-    //in this field(2nd param of reach), validate this data(info in validate method
-
-    let value =
+    let valueOf =
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
     yup
       .reach(formSchema, event.target.name)
-      .validate(value)
+      .validate(valueOf)
       .then(valid => {
         setErrorState({ ...errorState, [event.target.name]: "" });
       })
@@ -58,7 +60,7 @@ const App = () => {
     validate(event);
     let valueOf =
       event.target.type === "checkbox"
-        ? event.target.check
+        ? event.target.checked
         : event.target.value;
 
     setFormState({ ...formState, [event.target.name]: valueOf });
@@ -76,7 +78,10 @@ const App = () => {
           email: "",
           phone: "",
           special: "",
-          check: false
+          extraCheese: "",
+          sausage: "",
+          pineapple: "",
+          mushrooms: ""
         });
         // setUsers(res.data.data); //need to see what data will look like first***************************
       })
@@ -100,7 +105,7 @@ const App = () => {
       <div>{order.length > 0 && JSON.stringify(order)}</div>
 
       <Switch>
-        <Route path="/pizza">
+        <Route exact path="/pizza">
           <Order
             formState={formState}
             errorState={errorState}

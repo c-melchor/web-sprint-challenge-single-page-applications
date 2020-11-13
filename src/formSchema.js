@@ -9,7 +9,10 @@ const formSchema = yup.object().shape({
     .required("Please enter an e-mail address"),
   phone: yup.string().required(),
   special: yup.string().required(),
-  check: yup.boolean()
+  extraCheese: yup.boolean(),
+  mushrooms: yup.boolean(),
+  sausage: yup.boolean(),
+  pineapple: yup.boolean()
 });
 
 export default formSchema;
