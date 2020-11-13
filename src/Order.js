@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledOrderDiv = styled.div`
@@ -16,6 +16,12 @@ const StyledOrderDiv = styled.div`
   align-items: center;
   font-weight: bold;
 `;
+const sizes = {
+  default: "Choose One",
+  small: "Small",
+  medium: "Medium",
+  large: "Large"
+};
 
 export default function Order(props) {
   const { onChange, formState, errorState, onSubmit } = props;
@@ -27,6 +33,7 @@ export default function Order(props) {
         <label htmlFor="name">
           Name:
           <input
+            data-cy="name"
             type="text"
             name="name"
             placeholder="Enter your name"
@@ -41,6 +48,7 @@ export default function Order(props) {
         <label htmlFor="email">
           Email:
           <input
+            data-cy="email"
             type="text"
             name="email"
             placeholder="Enter your e-mail"
@@ -55,6 +63,7 @@ export default function Order(props) {
         <label htmlFor="phone">
           Phone Number
           <input
+            data-cy="phone"
             type="text"
             name="phone"
             placeholder="Enter your phone #"
@@ -66,17 +75,24 @@ export default function Order(props) {
           {errorState.phone}
         </p>
 
-        <select>
-          <option value="choose one">Choose One</option>
-          <option value="Small">Small</option>
-          <option value="Medium">Medium</option>
-          <option value="Large">Large</option>
+        <select name="sizes" value="{sizes.default}" onChange={onChange}>
+          <option value="0">Choose One</option>
+          <option data-cy="small" value="small">
+            Small
+          </option>
+          <option data-cy="medium" value="2">
+            Medium
+          </option>
+          <option data-cy="large" value="3">
+            Large
+          </option>
         </select>
 
         <div className="toppings">
           <label htmlFor="extraCheese">
             Extra Cheese
             <input
+              data-cy="extraCheese"
               type="checkbox"
               name="extraCheese"
               onChange={onChange}
@@ -86,6 +102,7 @@ export default function Order(props) {
           <label htmlFor="mushrooms">
             Mushrooms
             <input
+              data-cy="mushrooms"
               type="checkbox"
               name="mushrooms"
               onChange={onChange}
@@ -95,6 +112,7 @@ export default function Order(props) {
           <label htmlFor="sausage">
             Sausage
             <input
+              data-cy="sausage"
               type="checkbox"
               name="sausage"
               onChange={onChange}
@@ -104,6 +122,7 @@ export default function Order(props) {
           <label htmlFor="pineapple">
             Pineapple
             <input
+              data-cy="pineapple"
               type="checkbox"
               name="pineapple"
               onChange={onChange}
@@ -122,9 +141,7 @@ export default function Order(props) {
           />
         </label>
 
-        <button className="submit" type="submit">
-          Add to Order
-        </button>
+        <input data-cy="submitBtn" className="submit" type="submit" />
       </form>
     </StyledOrderDiv>
   );

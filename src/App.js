@@ -11,10 +11,12 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
+    sizes: "",
     extraCheese: false,
     mushrooms: false,
     sausage: false,
     pineapple: false,
+
     special: ""
   };
 
@@ -22,6 +24,7 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
+    sizes: "",
     extraCheese: "",
     mushrooms: "",
     sausage: "",
