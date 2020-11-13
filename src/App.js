@@ -12,7 +12,7 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
-    check: false,
+    // check: false,
     special: ""
   };
 
@@ -20,7 +20,7 @@ const App = () => {
     name: "",
     email: "",
     phone: "",
-    check: false,
+    // check: false,
     special: ""
   };
 
@@ -64,25 +64,26 @@ const App = () => {
     setFormState({ ...formState, [event.target.name]: valueOf });
   };
 
-  // const onSubmit = event => {
-  //   event.preventDefault();
-  //   axios
-  //     .post("https://reqres.in/api/users", formState)
-  //     .then(res => {
-  //       console.log(res);
-  //       setOrder(arr => [...arr, res.data]);
-  //       setFormState({
-  //         name: "",
-  //         email: "",
-  //         phone: "",
-  //         check: false
-  //       });
-  //       // setUsers(res.data.data); //need to see what data will look like first***************************
-  //     })
-  //     .catch(err => {
-  //       console.log(err, "error");
-  //     });
-  // };
+  const onSubmit = event => {
+    event.preventDefault();
+    console.log(event.target, "event here!!!");
+    axios
+      .post("https://reqres.in/api/order", formState)
+      .then(res => {
+        setOrder(arr => [...arr, res.data]);
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          special: "",
+          check: false
+        });
+        // setUsers(res.data.data); //need to see what data will look like first***************************
+      })
+      .catch(err => {
+        console.log(err, "error");
+      });
+  };
 
   return (
     <div className="App">
@@ -96,15 +97,16 @@ const App = () => {
         </li>
       </ul>
 
+      <div>{order.length > 0 && JSON.stringify(order)}</div>
+
       <Switch>
         <Route path="/pizza">
           <Order
             formState={formState}
             errorState={errorState}
             onChange={onChange}
-            // onSubmit={onSubmit}
+            onSubmit={onSubmit}
           />
-          <pre>{order.length > 0 && JSON.stringify(order)}</pre>
         </Route>
 
         <Route path="/" component={Home}>

@@ -11,12 +11,12 @@ const StyledOrderDiv = styled.div`
 `;
 
 export default function Order(props) {
-  const { onChange, formState, errorState } = props;
+  const { onChange, formState, errorState, onSubmit } = props;
 
   return (
     <StyledOrderDiv>
       <p>HIIIII</p>
-      <form>
+      <form onSubmit={onSubmit}>
         <label>
           Name:
           <input
@@ -95,7 +95,9 @@ export default function Order(props) {
           />
         </label>
 
-        <button type="submit">Add to Order</button>
+        <button className="submit" type="submit">
+          Add to Order
+        </button>
       </form>
     </StyledOrderDiv>
   );
